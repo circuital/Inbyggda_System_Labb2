@@ -16,17 +16,23 @@ int main(void)
     led_init();
 
     //Deluppgift 1
-    while (1) 
+    //while (1) 
+    //{
+    //    while ((TIFR0 & (1 << OCF0A)) > 0) //Timer/Counter Interrupt Flag Register. Väntar på ett overflow event. 
+    //    {      
+    //        overflowCount++;
+    //        if (overflowCount == 10)
+    //        {
+    //            toggle_led();
+    //            overflowCount = 0;
+    //        }
+    //        TIFR0 |= (1 << OCF0A);  //Rensar overflow flaggan. 
+    //    }
+    //}
+
+    //Deluppgift 2
+    while (1)
     {
-        while ((TIFR0 & (1 << OCF0A)) > 0) //Timer/Counter Interrupt Flag Register. Väntar på ett overflow event. 
-        {      
-            overflowCount++;
-            if (overflowCount == 10)
-            {
-                toggle_led();
-                overflowCount = 0;
-            }
-            TIFR0 |= (1 << OCF0A);  //Rensar overflow flaggan. 
-        }
+        change_led();
     }
 }
