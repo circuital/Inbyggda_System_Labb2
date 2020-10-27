@@ -31,8 +31,18 @@ int main(void)
     //}
 
     //Deluppgift 2
+    //while (1)
+    //{
+    //    change_led();
+    //}
+
+    //Deluppgift 3
     while (1)
     {
-        change_led();
+        while ((TIFR2 & (1 << OCF2A)) > 0) //Timer/Counter Interrupt Flag Register. Väntar på ett overflow event. 
+        {      
+            OCR0A = simple_ramp();
+            TIFR2 |= (1 << OCF2A);  //Rensar overflow flaggan. 
+        }
     }
 }
